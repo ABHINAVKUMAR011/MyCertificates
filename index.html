@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>📜My Certificates 📜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📜My Certificates📜</h1>
+    </header>
+
+    <button onclick="toggleDarkMode()">🌙</button>
+    <button onclick="filterCertificates('All')">All</button>
+
+
+    <input type="text" id="searchBox" placeholder="Search certificates..." onkeyup="searchCertificates()">
+
+
+
+    <section class="gallery">
+
+        <div class="certificate">
+            <img src="operating system.jpeg" alt="Certificate 1">
+            <a href="operating system.jpeg" download class="download-btn">⬇️</a>
+            <p>Operating System (Coursera)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="Computer Networks.jpeg" alt="Certificate 2">
+            <a href="Computer Networks.jpeg" download class="download-btn">⬇️</a>
+            <p>Computer Networks (Coursera)</p>
+            
+        </div>
+
+        <div class="certificate">
+            <img src="Git & Github_page-.jpg" alt="Certificate 3">
+            <a href="Git & Github_page-.jpg" download class="download-btn">⬇️</a>
+            <p>Git & Github (Coursera)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="udemy web development.jpg" alt="Certificate 4">
+            <a href="udemy web development.jpg" download class="download-btn">⬇️</a>
+            <p>Web Development (UDEMY)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="fullstack certificate ABHINAV 12212032_page-0001.jpg" alt="Certificate 5">
+            <a href="fullstack certificate ABHINAV 12212032_page-0001.jpg" download class="download-btn">⬇️</a>
+            <p>fullstack Development (LinkedinLearning)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="codechef cpp.jpeg" alt="Certificate 6">
+            <a href="codechef cpp.jpeg" download class="download-btn">⬇️</a>
+            <p>CPP (CODECHEF)</p>
+        </div>
+        
+        <div class="certificate">
+            <img src="DSA_page-0001.jpg" alt="Certificate 7">
+            <a href="DSA_page-0001.jpg"download-btn">⬇️</a>
+            <p>DSA(GFG)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="excel skills.jpeg" alt="Certificate 8">
+            <a href="excel skills.jpeg" download class="download-btn">⬇️</a>
+            <p>Excel (Coursera)</p>
+        </div>
+        
+        <div class="certificate">
+            <img src="power bi_page-0001.jpg" alt="Certificate 9">
+            <a href="power bi_page-0001.jpg" download class="download-btn">⬇️</a>
+            <p>Power Bi (Skill Courses)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="Tableau_page-0001.jpg" alt="Certificate 10">
+            <a href="Tableau_page-0001.jpg" download class="download-btn">⬇️</a>
+            <p>Tableau(Coursera)</p>
+        </div>
+        <div class="certificate">
+            <img src="R programming.jpeg" alt="Certificate 11">
+            <a href="R programming.jpeg" download class="download-btn">⬇️</a>
+            <p>R programming (Coursera)</p>
+        </div>
+        <div class="certificate">
+            <img src="Supervised Learning_page-0001.jpg" alt="Certificate 12">
+            <a href="Supervised Learning_page-0001.jpg" download class="download-btn">⬇️</a>
+            <p>Supervised Machine Learning (Coursera)</p>
+        </div>
+        <div class="certificate">
+            <img src="Software Eng.jpg" alt="Certificate 13">
+            <a href="Software Eng.jpg" download class="download-btn">⬇️</a>
+            <p>Softare Enginering (Coursera)</p>
+        </div>
+        <div class="certificate">
+            <img src="Software Testing_page.jpg" alt="Certificate 14">
+            <a href="Software Testing_page.jpg" download class="download-btn">⬇️</a>
+            <p>Software Testing (NPTEL)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="prompt eng.jpeg" alt="Certificate 15">
+            <a href="prompt eng.jpeg"download-btn">⬇️</a>
+            <p>Prompt Enginering (Coursera)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="Build Apps.jpeg" alt="Certificate 16">
+            <a href="Build Apps.jpeg" download class="download-btn">⬇️</a>
+            <p>Build Apps Using AI (Coursera)</p>
+        </div>
+
+        <div class="certificate">
+            <img src="intelligence tools for digital age.jpg" alt="Certificate 17">
+            <a href="intelligence tools for digital age.jpg" download class="download-btn">⬇️</a>
+            <p>Intelligence Tools (Coursera)</p>
+        </div>
+        
+
+        <!-- Add more certificates as needed -->
+    </section>
+    <!-- Add this at the end of the body -->
+
+
+
+<div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+    <div id="caption"></div>
+</div>
+
+
+
+
+
+<script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const captionText = document.getElementById("caption");
+
+    // Add click listeners to all certificate images
+    document.querySelectorAll(".certificate img").forEach(img => {
+        img.addEventListener("click", function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt + " - " + this.nextElementSibling.textContent;
+        });
+    });
+
+    // Close the modal when the 'x' is clicked
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Optional: Close when clicking outside the modal image
+    window.addEventListener("click", function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    });
+
+    function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function filterCertificates(category) {
+    document.querySelectorAll(".certificate").forEach(cert => {
+        const text = cert.querySelector("p").textContent;
+        cert.style.display = (category === 'All' || text.includes(category)) ? 'block' : 'none';
+    });
+}
+
+
+function searchCertificates() {
+    const query = document.getElementById("searchBox").value.toLowerCase();
+    document.querySelectorAll(".certificate").forEach(cert => {
+        const text = cert.querySelector("p").textContent.toLowerCase();
+        cert.style.display = text.includes(query) ? 'block' : 'none';
+    });
+}
+
+</script>
+
+</body>
+</html>
